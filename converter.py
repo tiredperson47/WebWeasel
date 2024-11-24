@@ -8,7 +8,7 @@ import os
 parser = argparse.ArgumentParser(description="Convert Gobuster output to JSON")
 # Add -f for the input file and -o for the output directory
 parser.add_argument('-f', '--file', type=str, required=True, help="Path to the Gobuster output file")
-parser.add_argument('-o', '--output', type=str, required=True, help="Path to the output JSON file")
+parser.add_argument('-o', '--output', type=str, required=True, help="Name of JSON output file")
 #parser.add_argument('-i', '--ip', type=str, required=True, help="IP address of server you scanned")
 parser.add_argument('-d', '--directory', type=str, required=True, help="Dirctory/Subdirectory you scanned with Gobuster")
 
@@ -39,14 +39,7 @@ if not os.path.isfile(file):
     print(f"Error: The file '{file}' does not exist.")
     exit(1)
 
-# Ensure the output directory exists
-output_dir = os.path.dirname(output)
-if not os.path.exists(output_dir):
-    print(f"Error: The output directory '{output_dir}' does not exist.")
-    exit(1)
-
 # initialize dictionary and shit for output and neo4j
-dict1 = {}
 node = []
 relationship = []
 
